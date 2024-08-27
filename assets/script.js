@@ -17,4 +17,8 @@ const slides = [
 	}
 ]
 
-let 
+let left = document.getElementById("left")
+console.log(left)
+
+let right = document.getElementById("right")
+console.log(right)
