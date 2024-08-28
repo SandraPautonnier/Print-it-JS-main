@@ -126,6 +126,13 @@ header {
 #banner .arrow {
 	position: absolute;
 }
+#banner button {
+	border: none;
+	background-color: transparent;
+}
+img {
+	cursor: pointer;
+}
 #banner .arrow_left {
 	left: 10px;
 }
@@ -295,3 +302,4 @@ footer div {
 		flex: 2;
 	}
 }
+

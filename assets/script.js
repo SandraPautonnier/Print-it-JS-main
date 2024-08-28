@@ -1,3 +1,24 @@
+//Variables boutons prec et suivant
+let btnLeft = document.querySelector("#left");
+let btnRight = document.querySelector("#right")
+//Variable index des slides
+let currentBannerIndex = 0;
+
+//Fonction click bouton prec et suivant
+btnLeft.addEventListener("click", () => {
+	currentBannerIndex -= 1;
+
+})
+
+btnRight.addEventListener("click", () => {
+	currentBannerIndex += 1
+})
+
+console.log(currentBannerIndex);
+
+
+
+
 const slides = [
 	{
 		"image":"slide1.jpg",
@@ -16,9 +37,3 @@ const slides = [
 		"tagLine":"Autocollants <span>avec découpe laser sur mesure</span>"
 	}
 ]
-
-let left = document.getElementById("left")
-console.log(left)
-
-let right = document.getElementById("right")
-console.log(right)
