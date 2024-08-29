@@ -131,7 +131,7 @@ header {
 	background-color: transparent;
 }
 img {
-	cursor: pointer;
+	display: block;
 }
 #banner .arrow_left {
 	left: 10px;
