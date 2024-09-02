@@ -30,12 +30,14 @@ const bannerImage = document.querySelector(".banner-img");
 
 const bannerText = document.querySelector("#banner p")
 
+const nbSlides = slides.length 
+
 //Variable index des slides
 let currentBannerIndex = 0;
 //console.log(currentBannerIndex);
 
 //Gestion des bullets points
-function displayDots() {
+/*function displayDots() {
   for (let i = 0; i < slides.length; i++) {
     const dot = document.createElement("div");
     dot.className = currentBannerIndex === i ? "dot dot_selected" : "dot";
@@ -52,6 +54,30 @@ function updateDots() {
      currentBannerIndex === i ? "dot dot_selected" : "dot";
      //if (currentBannerIndex === i) { "dot dot_selected"} else {"dot"}
   }
+}*/
+
+function createDots() {
+  for (let i = 0; i < nbSlides; i++) {
+    const dot = document.createElement("div");
+    dot.className = "dot";
+    if (i === 0) {
+      dot.className = "dot dot_selected";
+    }
+    dots.appendChild(dot);
+  }
+}
+createDots()
+
+function updateDots() {
+  const dotOfDots = dots.getElementsByClassName("dot");
+  //console.log(dotOfDots);
+  for (let i = 0; i < nbSlides; i++) {
+    dotOfDots[i].className = "dot";
+    if (i === currentBannerIndex) {
+      dotOfDots[i].className = "dot dot_selected";
+    }
+    //console.log(dotOfDots[i]);
+  }
 }
 
 //Fonction click bouton prec et suivant
@@ -66,7 +92,6 @@ buttonLeft.addEventListener("click", function () {
     "./assets/images/slideshow/" + slides[currentBannerIndex].image;
   bannerText.innerHTML = 
     slides[currentBannerIndex].tagLine;
-
   updateDots();
 });
 
@@ -80,6 +105,5 @@ buttonRight.addEventListener("click", function () {
     "./assets/images/slideshow/" + slides[currentBannerIndex].image;
 bannerText.innerHTML = 
     slides[currentBannerIndex].tagLine;
-  //console.log("yes!");
   updateDots();
 });
