@@ -28,15 +28,17 @@ const dots = document.querySelector(".dots");
 
 const bannerImage = document.querySelector(".banner-img");
 
+const bannerText = document.querySelector("#banner p")
+
 //Variable index des slides
 let currentBannerIndex = 0;
 //console.log(currentBannerIndex);
 
 //Gestion des bullets points
 function displayDots() {
-  for (let index = 0; index < slides.length; index++) {
+  for (let i = 0; i < slides.length; i++) {
     const dot = document.createElement("div");
-    dot.className = currentBannerIndex === index ? "dot dot_selected" : "dot";
+    dot.className = currentBannerIndex === i ? "dot dot_selected" : "dot";
     dots.appendChild(dot);
   }
 }
@@ -44,9 +46,11 @@ function displayDots() {
 displayDots();
 
 function updateDots() {
-  for (let i = 0; i < dots.childNodes.length; i++) {
-    const dot = dots.childNodes[i];
-    dot.className = currentBannerIndex === i ? "dot dot_selected" : "dot";
+  for (let i = 0; i < dots.childNodes.length -1; i++) {
+    const dot = dots.childNodes[i+1];
+    dot.className =
+     currentBannerIndex === i ? "dot dot_selected" : "dot";
+     //if (currentBannerIndex === i) { "dot dot_selected"} else {"dot"}
   }
 }
 
@@ -57,18 +61,25 @@ buttonLeft.addEventListener("click", function () {
   } else {
     currentBannerIndex -= 1;
   }
+  
   bannerImage.src =
     "./assets/images/slideshow/" + slides[currentBannerIndex].image;
+  bannerText.innerHTML = 
+    slides[currentBannerIndex].tagLine;
+
+  updateDots();
 });
 
 buttonRight.addEventListener("click", function () {
   if (currentBannerIndex === slides.length - 1) {
-    currentBannerIndex = 1;
+    currentBannerIndex = 0;
   } else {
     currentBannerIndex += 1;
   }
   bannerImage.src =
     "./assets/images/slideshow/" + slides[currentBannerIndex].image;
+bannerText.innerHTML = 
+    slides[currentBannerIndex].tagLine;
   //console.log("yes!");
   updateDots();
 });
